@@ -13,6 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/rules', { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 app.use(logger('dev'));
 app.use(express.json());
