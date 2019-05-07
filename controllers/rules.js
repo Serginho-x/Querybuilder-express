@@ -23,11 +23,11 @@ const addRule = async (req, res) => {
 const updateItem = async (req, res) => {
      const {value, name} = req.body;    
      if(req.params.id[0]==='g') { 
-          const item = await RuleGroup.findOneAndUpdate({id: req.params.id}, {[name]: value}, {new: true});
-          return res.json(item);          
+          await RuleGroup.findOneAndUpdate({id: req.params.id}, {[name]: value}, {new: true});
+          return res.json({id: req.params.id, value, name});          
      } else if (req.params.id[0]==='r') { 
-          const item = await Rule.findOneAndUpdate({id: req.params.id}, {[name]: value}, {new: true});
-          return res.json(item);      
+          await Rule.findOneAndUpdate({id: req.params.id}, {[name]: value}, {new: true});
+          return res.json({id: req.params.id, value, name});      
      } else { 
           return res.status(404)
      }    
