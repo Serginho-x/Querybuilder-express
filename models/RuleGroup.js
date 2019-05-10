@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const uuidv4 = require('uuidv4')
 
 const ruleGroupSchema = new Schema({
-    id: {
+    name: {
       type: Schema.Types.String,
-      required: true
-    },
+      default: null
+    },  
     rules: {
       type: Schema.Types.Array,
       default: []
@@ -16,7 +17,11 @@ const ruleGroupSchema = new Schema({
     },
     parentId: {
       type: Schema.Types.String,
-      default: ""
+      default: null
+    },
+    rootId: {
+      type: Schema.Types.String,
+      default: uuidv4
     }
 })
 

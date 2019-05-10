@@ -1,12 +1,19 @@
 const router = require('express-promise-router')();
-const {getRuleGroup, addRuleGroup, addRule, updateItem, deleteItem} = require('../controllers/rules');
-const validRuleGroupId = require('../middlewares/validRuleGroupId');
-const validRuleId = require('../middlewares/validRuleId');
+const { getDataBase,
+        addRuleGroup,
+        addRule,
+        updateRuleGroup,
+        updateRule,
+        deleteRuleGroup,
+        deleteRule} = require('../controllers/rules');
 
-router.get('/rules', getRuleGroup);
-router.post('/rules/addRuleGroup', validRuleGroupId, addRuleGroup);
-router.post('/rules/addRule', validRuleId, addRule);
-router.put('/rules/:id', updateItem);
-router.delete('/rules/:id', deleteItem);
+router.get('/rules', getDataBase);
+router.post('/rules/addRuleGroup', addRuleGroup);
+router.post('/rules/addRule', addRule);
+router.put('/rules/updateRuleGroup/:id', updateRuleGroup);
+router.put('/rules/updateRule/:id', updateRule);
+router.delete('/rules/deleteRuleGroup/:id', deleteRuleGroup);
+router.delete('/rules/deleteRule/:id', deleteRule);
 
 module.exports = router;
+

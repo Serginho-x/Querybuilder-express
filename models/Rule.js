@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ruleSchema = new Schema({
-    id: {
+    name: {
       type: Schema.Types.String,
-      required: true
-    },
+      default: null
+    },   
     field: {
       type: Schema.Types.String,
       default: "firstName"
@@ -16,11 +16,15 @@ const ruleSchema = new Schema({
     },
     operator: {
       type: Schema.Types.String,
-      default: "null"
+      default: ">"
     },  
     parentId: {
       type: Schema.Types.String,
-      default: ""
+      default: null
+    },
+    rootId: {
+      type: Schema.Types.String,
+      default: null
     }
 })
 
